@@ -36,10 +36,12 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <main className="mx-auto max-w-5xl text-2xl flex gap-2">
             <NavMenu />
-            <br />
-            <UserWrapper />
+
             {children}
           </main>
+          <footer>
+            <UserWrapper />
+          </footer>
         </SessionProvider>
       </body>
     </html>

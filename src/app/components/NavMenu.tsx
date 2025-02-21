@@ -1,5 +1,6 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
+import ClientFetch from "./ClientFetch";
 
 function AuthButton() {
   const { data: session } = useSession();
@@ -8,7 +9,7 @@ function AuthButton() {
     return (
       <>
         <button onClick={() => signOut()}>Sign out</button>
-        <CollectionButton />
+        <div className="overflow-auto h-[500px] w-[500px]"><ClientFetch /></div>
       </>
     );
   }
@@ -17,16 +18,6 @@ function AuthButton() {
         <button onClick={() => signIn()}>Sign in</button>
     </>
   ) 
-}
-
-function CollectionButton() {
-  function viewCollection(): void {
-    window.location.href = "/api/collection";
-  }
-
-  return (
-    <button onClick={() => viewCollection()}>Collection</button>
-  );
 }
 
 export default function NavMenu() {
