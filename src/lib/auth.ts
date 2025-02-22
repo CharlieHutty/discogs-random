@@ -1,8 +1,6 @@
 import { AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { Session } from "next-auth";
-import { log } from "console";
-
 
 interface CustomSession extends Session {
   oauth_token?: string;
@@ -33,7 +31,6 @@ export const authOptions: AuthOptions = {
       clientId: process.env.DISCOGS_ID,
       clientSecret: process.env.DISCOGS_SECRET,
       async profile(profileData: ProfileData) { 
-        log("Profile Data:", profileData);
         return {
           id: profileData.id,
           name: profileData.username,
