@@ -1,6 +1,14 @@
 'use client';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import ClientFetch from './ClientFetch';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import ThemeToggle from '@/components/ui/theme-toggle';
+import { SignInWithDiscogs, SignOut } from '@/components/ui/auth-buttons';
+
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 
 function AuthButton() {
   const { data: session } = useSession();
@@ -8,16 +16,13 @@ function AuthButton() {
   if (session) {
     return (
       <>
-        <button onClick={() => signOut()}>Sign out</button>
-        <div className="h-[500px] w-[500px] overflow-auto">
-          <ClientFetch />
-        </div>
+        <SignOut />
       </>
     );
   }
   return (
     <>
-      <button onClick={() => signIn()}>Sign in</button>
+      <SignInWithDiscogs />
     </>
   );
 }
@@ -25,7 +30,29 @@ function AuthButton() {
 export default function NavMenu() {
   return (
     <div>
-      <AuthButton />
+      <nav className="flex items-center justify-between border-b p-4">
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-4">
+            <NavigationMenuItem>
+              <Link href="/" className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Home
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link
+                href="/collection"
+                className="text-lg font-medium text-gray-900 dark:text-gray-100"
+              >
+                Collection
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+        <div className="flex items-center space-x-4">
+          <AuthButton />
+          <ThemeToggle />
+        </div>
+      </nav>
     </div>
   );
 }

@@ -5,10 +5,10 @@ import { getServerSession } from 'next-auth';
 
 import SessionProvider from '@/components/SessionProvider';
 import NavMenu from '@/components/NavMenu';
-import UserWrapper from '@/components/UserWrapper';
 
 import { ThemeProvider } from '@/components/theme-provider';
-import ThemeToggle from '@/components/ui/theme-toggle';
+
+import Footer from '@/components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,15 +36,9 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SessionProvider session={session}>
           <ThemeProvider attribute="class" defaultTheme="system">
-            <main className="mx-auto flex max-w-5xl gap-2 text-2xl">
-              <NavMenu />
-
-              {children}
-            </main>
-            <ThemeToggle />
-            <footer>
-              <UserWrapper />
-            </footer>
+            <NavMenu />
+            <main className="mx-auto flex max-w-5xl gap-2 text-2xl">{children}</main>
+            <Footer session={session} />
           </ThemeProvider>
         </SessionProvider>
       </body>

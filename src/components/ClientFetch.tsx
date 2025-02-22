@@ -1,7 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 export default function ClientSideFetch() {
+  const { data: session } = useSession();
   interface ApiResponse {
     releases: Release[];
   }
@@ -25,6 +27,8 @@ export default function ClientSideFetch() {
         setLoading(false);
       });
   }, []);
+
+  if (!session) return <p>Sign in to view your collection</p>;
 
   if (loading) return <p>Loading...</p>;
 
