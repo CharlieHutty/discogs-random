@@ -1,6 +1,6 @@
-import { AuthOptions } from "next-auth";
-import { JWT } from "next-auth/jwt";
-import { Session } from "next-auth";
+import { AuthOptions } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
 
 interface CustomSession extends Session {
   oauth_token?: string;
@@ -15,22 +15,22 @@ type ProfileData = {
   image: string;
   username: string;
   avatar_url: string;
-}
+};
 
 export const authOptions: AuthOptions = {
   providers: [
     {
-      id: "discogs",
-      name: "Discogs",
-      type: "oauth",
-      version: "1.0",
-      requestTokenUrl: "https://api.discogs.com/oauth/request_token",
-      authorization: "https://www.discogs.com/oauth/authorize",
-      accessTokenUrl: "https://api.discogs.com/oauth/access_token",
-      profileUrl: "https://api.discogs.com/oauth/identity",
+      id: 'discogs',
+      name: 'Discogs',
+      type: 'oauth',
+      version: '1.0',
+      requestTokenUrl: 'https://api.discogs.com/oauth/request_token',
+      authorization: 'https://www.discogs.com/oauth/authorize',
+      accessTokenUrl: 'https://api.discogs.com/oauth/access_token',
+      profileUrl: 'https://api.discogs.com/oauth/identity',
       clientId: process.env.DISCOGS_ID,
       clientSecret: process.env.DISCOGS_SECRET,
-      async profile(profileData: ProfileData) { 
+      async profile(profileData: ProfileData) {
         return {
           id: profileData.id,
           name: profileData.username,
