@@ -6,6 +6,7 @@ export type Release = {
     thumb: string;
     cover_image: string;
     artists: [Artist];
+    styles: string[];
   };
 };
 

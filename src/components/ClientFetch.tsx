@@ -14,7 +14,7 @@ export default function ClientSideFetch() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/collection', {cache: 'force-cache'})
+    fetch('/api/collection', { cache: 'force-cache' })
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -27,7 +27,7 @@ export default function ClientSideFetch() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       {data?.releases.map((release: Release) => {
         return (
           <Card

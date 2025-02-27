@@ -1,11 +1,3 @@
-import ClientSideFetch from '@/components/ClientFetch';
-
-export default function Home() {
-  return (
-    <div>
-      <div className="h-full w-full overflow-auto">
-        <ClientSideFetch />
-      </div>
-    </div>
-  );
+export default async function Home({}) {
+  return <div className="min-w-screen flex flex-row items-center justify-center"></div>;
 }
