@@ -7,7 +7,7 @@ import SessionProvider from '@/components/SessionProvider';
 import NavMenu from '@/components/NavMenu';
 
 import { ThemeProvider } from '@/components/theme-provider';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react';
 
 import Footer from '@/components/Footer';
 
@@ -42,7 +42,7 @@ export default async function RootLayout({
             <Footer session={session} />
           </ThemeProvider>
         </SessionProvider>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );

@@ -1,19 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { Release } from '@/lib/types/Release';
+import Card from '@/components/Card';
 
 export default function ClientSideFetch() {
   const { data: session } = useSession();
   interface ApiResponse {
     releases: Release[];
-  }
-
-  interface Release {
-    id: number;
-    basic_information: {
-      title: string;
-      year: number;
-    };
   }
 
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -34,13 +28,16 @@ export default function ClientSideFetch() {
 
   return (
     <div>
-      <div>
-        <ul>
-          {data?.releases.map((release: Release) => (
-            <li key={release.basic_information.title}>{release.basic_information.title}</li>
-          ))}
-        </ul>
-      </div>
+      {data?.releases.map((release: Release) => {
+        return (
+          <Card
+            imageUrl={release.basic_information.cover_image}
+            title={release.basic_information.title}
+            description={release.basic_information.artists[0].name}
+            key={release.id}
+          />
+        );
+      })}
     </div>
   );
 }
