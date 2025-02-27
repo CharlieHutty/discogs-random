@@ -6,7 +6,7 @@ export function SignInWithDiscogs() {
     <Button
       variant="outline"
       onClick={() => signIn('discogs')}
-      className='hover:bg-stone-950 hover:text-white  hover:dark:bg-stone-50 hover:dark:text-black'
+      className="hover:bg-stone-950 hover:text-white hover:dark:bg-stone-50 hover:dark:text-black"
     >
       <span>Sign in with Discogs</span>
     </Button>
@@ -15,7 +15,11 @@ export function SignInWithDiscogs() {
 
 export function SignOut() {
   return (
-    <Button variant="outline" onClick={() => signOut()} className='hover:bg-stone-950 hover:text-white  hover:dark:bg-stone-50 hover:dark:text-black'>
+    <Button
+      variant="outline"
+      onClick={() => signOut()}
+      className="hover:bg-stone-950 hover:text-white hover:dark:bg-stone-50 hover:dark:text-black"
+    >
       <span>Sign out</span>
     </Button>
   );
