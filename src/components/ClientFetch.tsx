@@ -14,7 +14,7 @@ export default function ClientSideFetch() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/collection')
+    fetch('/api/collection', {cache: 'force-cache'})
       .then((response) => response.json())
       .then((data) => {
         setData(data);
