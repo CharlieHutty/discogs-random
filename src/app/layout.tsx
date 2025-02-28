@@ -38,7 +38,9 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <ThemeProvider attribute="class" defaultTheme="system">
             <NavMenu />
-            <main className="mx-auto flex max-w-5xl gap-2 text-2xl">{children}</main>
+            <div className="mx-auto flex max-w-8xl gap-2 text-2xl">
+              {children}
+            </div>
             <Footer session={session} />
           </ThemeProvider>
         </SessionProvider>
