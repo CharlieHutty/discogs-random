@@ -7,8 +7,11 @@ describe('Home', () => {
     render(<Home />)
  
     const heading = screen.getByRole('heading');
+    const paragraph = screen.getByText('Hello, world!');
  
     expect(heading).toBeInTheDocument();
     expect(heading).toHaveTextContent('Test');
+    expect(paragraph).toBeInTheDocument();
+    expect(paragraph).toHaveTextContent('Hello, world!');
   })
 })

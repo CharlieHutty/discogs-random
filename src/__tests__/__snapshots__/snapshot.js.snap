@@ -8,6 +8,9 @@ exports[`renders homepage unchanged 1`] = `
     <h1>
       Test
     </h1>
+    <p>
+      Hello, world!
+    </p>
   </div>
 </div>
 `;
