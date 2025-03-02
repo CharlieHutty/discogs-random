@@ -1,7 +1,6 @@
 import React from 'react';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import AlbumTitleFormatter from '@/lib/formatter/AlbumTitleFormatter';
-
 
 const Card = ({ imageUrl, title, description }) => {
   const router = useRouter();
@@ -11,7 +10,10 @@ const Card = ({ imageUrl, title, description }) => {
   };
 
   return (
-    <div className="max-w-sm transform overflow-hidden rounded-2xl shadow-md shadow-gray-600/50 transition-transform hover:scale-105" onClick={handleClick}>
+    <div
+      className="max-w-sm transform overflow-hidden rounded-2xl shadow-md shadow-gray-600/50 transition-transform hover:scale-105"
+      onClick={handleClick}
+    >
       <img className="h-48 w-full object-cover" src={imageUrl} alt={title} />
       <div className="p-4">
         <h2 className="text-lg font-semibold">{title}</h2>
