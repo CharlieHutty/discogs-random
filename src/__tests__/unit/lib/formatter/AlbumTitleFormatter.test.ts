@@ -30,4 +30,11 @@ describe('format', () => {
     const formattedTitle = format(albumTitle);
     expect(formattedTitle).toBe('the-dark-side-of-the-moon-remastered');
   });
+
+
+  it('fomat given title with trademark return expected output', () => {
+    const albumTitle = "Batman™ (Motion Picture Soundtrack)";
+    const formattedTitle = format(albumTitle);
+    expect(formattedTitle).toBe('batman-motion-picture-soundtrack');
+  });
 });
