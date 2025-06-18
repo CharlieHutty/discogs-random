@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { Release } from '@/lib/types/Release';
 import Card from '@/components/Card';
+import Spinner from '@/components/ui/Spinner';
 
 export default function ClientSideFetch() {
   const { data: session } = useSession();
@@ -24,8 +25,8 @@ export default function ClientSideFetch() {
 
   if (!session) return <p>Sign in to view your collection</p>;
 
-  if (loading) return <p>Loading...</p>;
-
+  if (loading) return <Spinner />;
+  
   return (
     <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       {data?.releases.map((release: Release) => {
