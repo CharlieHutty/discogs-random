@@ -6,7 +6,7 @@ import { Release } from '@/lib/types/Release';
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: { src: string; alt: string; unoptimized?: boolean; [key: string]: unknown }) => {
-    const { unoptimized, ...imgProps } = props;
+    const { ...imgProps } = props;
     return <img {...imgProps} alt={props.alt || ''} />;
   },
 }));
