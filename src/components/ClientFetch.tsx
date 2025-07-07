@@ -19,6 +19,7 @@ export default function ClientSideFetch() {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
+        sessionStorage.setItem('collection', JSON.stringify(data));
         setLoading(false);
       });
   }, []);
